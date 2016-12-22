@@ -1,4 +1,4 @@
-package com.mac.fireflies.wgt.contentprovier;
+package com.mac.fireflies.wgt.contentprovider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;

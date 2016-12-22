@@ -1,4 +1,4 @@
-package com.mac.fireflies.wgt.contentprovier;
+package com.mac.fireflies.wgt.contentprovider;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
