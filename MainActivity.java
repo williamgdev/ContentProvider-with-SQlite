@@ -34,5 +34,6 @@ public class MainActivity extends AppCompatActivity {
         }while(cursor.moveToNext());
         cursor.close();
         Log.d(TAG, "onCreate: " + getContentResolver().getType(usersUri));
+        Log.d(TAG, "onCreate: " + usersUri.toString());
     }
 }
