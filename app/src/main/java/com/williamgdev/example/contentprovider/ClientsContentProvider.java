@@ -1,4 +1,4 @@
-package com.mac.fireflies.wgt.contentprovider;
+package com.williamgdev.example.contentprovider;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.util.Log;
 
 public class ClientsContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.mac.fireflies.wgt.clientscontentproviders";
+    public static final String AUTHORITY = "com.williamgdev.example.contentprovider.clientscontentproviders";
     public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
 
     private UsersDataHelper userDataHelper;

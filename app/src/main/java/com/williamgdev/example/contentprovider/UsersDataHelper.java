@@ -1,4 +1,4 @@
-package com.mac.fireflies.wgt.contentprovider;
+package com.williamgdev.example.contentprovider;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

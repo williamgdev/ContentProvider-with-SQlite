@@ -1,5 +1,6 @@
-package com.mac.fireflies.wgt.contentprovider;
+package com.williamgdev.example.contentprovider;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
