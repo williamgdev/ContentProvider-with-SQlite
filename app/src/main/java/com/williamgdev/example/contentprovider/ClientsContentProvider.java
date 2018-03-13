@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.util.Log;
 
 public class ClientsContentProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.williamgdev.example.contentprovider.clientscontentproviders";
+    public static final String AUTHORITY = "com.williamgdev.example.contentprovider.contacts";
     public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
 
     private UsersDataHelper userDataHelper;
