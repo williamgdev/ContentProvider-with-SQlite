@@ -6,20 +6,34 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.Dictionary;
 
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity => ";
+    private TextView txtView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        txtView = findViewById(R.id.txtView);
 //        populate();
 
-        Uri usersUri = UsersDataHelper.URI_PHONES;
+        String action = getIntent().getAction();
+        Uri data = getIntent().getData();
+        if (data!= null && data.toString().equals("example://contentprovider/users")) {
+            printUsersName();
+        }
+
+    }
+
+    private void printUsersName() {
+        txtView.setText(null);
+        Uri usersUri = UsersDataHelper.URI_USERS;
         Cursor cursor = getContentResolver().query(usersUri, null, null, null, null, null);
         cursor.moveToFirst();
         if (cursor.getCount() == 0) {
@@ -29,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onCreate: Count: " + cursor.getCount());
         }
         do {
-            Log.d(TAG, "onCreate: " + cursor.getString(cursor.getColumnIndex(UsersDataHelper.KEY_PHONE)));
+            String username = cursor.getString(cursor.getColumnIndex(UsersDataHelper.KEY_USER_NAME));
+            txtView.setText(txtView.getText() + "\n" + username);
+            Log.d(TAG, "onCreate: " + username);
         } while (cursor.moveToNext());
         cursor.close();
         Log.d(TAG, "onCreate: " + getContentResolver().getType(usersUri));
