@@ -129,8 +129,20 @@ public class ClientsContentProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues values, String selection,
                       String[] selectionArgs) {
-        // TODO: Implement this to handle requests to update one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        final SQLiteDatabase db = userDataHelper.getWritableDatabase();
+        int result;
+        final int match = uriMatcher.match(uri);
+        switch (match){
+            case MATCH_USERS:
+                result = db.update(UsersDataHelper.TABLE_USERS, values, selection, selectionArgs);
+                break;
+            case MATCH_PHONES:
+                result = db.update(UsersDataHelper.TABLE_PHONES, values, selection, selectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+        return result;
     }
 
     public void populateDatabase() {
@@ -149,7 +161,7 @@ public class ClientsContentProvider extends ContentProvider {
             db.insertOrThrow(userDataHelper.TABLE_PHONES, null, valuesPhones);
         } catch (SQLException e) {
             Log.d(TAG, "populateDatabase: Error while trying insert values into the database");
-        }finally {
+        } finally {
             db.endTransaction();
         }
 
