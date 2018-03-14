@@ -17,6 +17,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter android:label="Deep Link User">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "example://contentprovider/users” -->
+                <data android:scheme="example"
+                    android:host="contentprovider"
+                    android:pathPrefix="/users"/>
+            </intent-filter>
         </activity>
         <provider
             android:authorities="com.williamgdev.example.contentprovider.contacts"
