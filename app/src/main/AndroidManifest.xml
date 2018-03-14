@@ -22,6 +22,15 @@
             android:authorities="com.williamgdev.example.contentprovider.contacts"
             android:name=".ClientsContentProvider"
             android:multiprocess="true"/>
+        <intent-filter android:label="Deep Link User">
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <!-- Accepts URIs that begin with "example://contentprovider” -->
+            <data android:scheme="example"
+                android:host="contentprovider"
+                android:pathPrefix="/users"/>
+        </intent-filter>
     </application>
 
 </manifest>
