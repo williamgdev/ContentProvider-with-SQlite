@@ -35,8 +35,20 @@ public class ClientsContentProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        // Implement this to handle requests to delete one or more rows.
-        throw new UnsupportedOperationException("Not yet implemented");
+        final SQLiteDatabase db = userDataHelper.getWritableDatabase();
+        int result;
+        final int match = uriMatcher.match(uri);
+        switch (match){
+            case MATCH_USERS:
+                result = db.delete(UsersDataHelper.TABLE_USERS, selection, selectionArgs);
+                break;
+            case MATCH_PHONES:
+                result = db.delete(UsersDataHelper.TABLE_PHONES, selection, selectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+        return result;
     }
 
     @Override
